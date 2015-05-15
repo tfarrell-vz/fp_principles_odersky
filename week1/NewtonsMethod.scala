@@ -20,7 +20,10 @@ object NewtonsMethod {
     if (isGoodEnough(guess, x)) guess
     else sqrIter(improve(guess, x), x)
   }
+
+  def sqrt(num: Double): Double = sqrIter(1.0, num)
+
   def main(args: Array[String]): Unit = {
-    println("The estimated square root of 5 starting with a guess of 1 is: " + sqrIter(1.0, 5.0))
+    println("The estimated square root of 5 starting with a guess of 1 is: " + sqrt(5))
   }
 }
