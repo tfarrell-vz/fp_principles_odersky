@@ -13,7 +13,7 @@ object NewtonsMethodImproved {
   def improve(guess: Double, x: Double): Double = {
     val quotient = x / guess
     val mean = (quotient + guess) / 2.0
-    return mean
+    mean
   }
 
   def reduceErrorSqrIter(x: Double):Double = {
@@ -45,7 +45,8 @@ object NewtonsMethodImproved {
   }
 
   def sqrt(num: Double): Double = {
-    if (num < 1 || num > 10000) {
+    if (num == 0) 0
+    else if (num < 1 || num > 10000) {
       println("Using reduceErrorSqrIter")
       reduceErrorSqrIter(num)
     }
