@@ -6,7 +6,7 @@ object NewtonsMethod {
   }
 
   def isGoodEnough(guess: Double, x: Double) = {
-    if (abs((guess * guess - x)) < 0.01) true
+    if (abs((guess * guess - x)) < 0.001) true
     else false
   }
 
