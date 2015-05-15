@@ -13,6 +13,7 @@ object NewtonsMethod {
   def improve(guess: Double, x: Double): Double = {
     val quotient = x / guess
     val mean = (quotient + guess) / 2.0
+    return mean
   }
 
   def sqrIter(guess:Double, x:Double):Double = {
