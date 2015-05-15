@@ -17,21 +17,26 @@ object NewtonsMethodImproved {
   }
 
   def reduceErrorSqrIter(x: Double):Double = {
-    val num = {
-      if (x < 0) 1.0/x
-      else x
+    def raisedTo(j: Double, k: Int): Double = {
+      def loop(num: Double, acc: Double, count: Int): Double = {
+        if (count == 0) acc
+        else loop(num, acc*num, count-1)
+      }
+      loop(j, 1, k)
+    }
+    def downLoop(num: Double, count: Int): Double = {
+      if (num < 10000) sqrt(num) * raisedTo(10.0, count)
+      else downLoop(num / 100.0, count + 1)
     }
 
-    def loop(cur: Double, count: Int):(Double, Int) = {
-      if (cur <= 10000) (cur, count)
-      else loop(cur/100.0, count+1)
+    def upLoop(num: Double, count: Int):Double = {
+      if (num > 1) sqrt(num) / raisedTo(10.0, count)
+      else upLoop(num * 100.0, count+1)
     }
 
-    val reduce = loop(num, 0)
-    val compute = sqrt(reduce._1) * (10.0 * reduce._1)
+    if (x > 10000) downLoop(x, 0)
+    else upLoop(x, 0)
 
-    if (x < 0) 1.0 / compute
-    else compute
   }
 
   def sqrIter(guess:Double, x:Double):Double = {
@@ -40,7 +45,7 @@ object NewtonsMethodImproved {
   }
 
   def sqrt(num: Double): Double = {
-    if (num < 0 ||num > 10000) {
+    if (num < 1 || num > 10000) {
       println("Using reduceErrorSqrIter")
       reduceErrorSqrIter(num)
     }
