@@ -7,4 +7,9 @@ object Factorial {
     }
     loop(n, 1)
   }
+
+  def factorial_non(n: Int):Int = {
+    if (n == 0) 1
+    else n * factorial_non(n-1)
+  }
 }
