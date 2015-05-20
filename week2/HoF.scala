@@ -13,6 +13,8 @@ object HoF {
     else f(a) * product(f)(a+1, b)
   }
 
+  def factorial(n: Int): Int = product(id)(1, n)
+
   def cube(x: Int): Int = x * x * x
   def square(x: Int): Int = x * x
   def id(x: Int): Int = x
