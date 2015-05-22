@@ -15,7 +15,14 @@ object HoF {
 
   def factorial(n: Int): Int = product(id)(1, n)
 
+  def sum(a: Int, b: Int) = a + b
+  
   def cube(x: Int): Int = x * x * x
   def square(x: Int): Int = x * x
   def id(x: Int): Int = x
+
+  def mapReduce(f: Int => Int, combine: (Int, Int) => Int, zero: Int)(a: Int, b: Int): Int = {
+    if (a > b) zero
+    else combine(f(a), mapReduce(f, combine, zero)(a+1, b))
+  }
 }
