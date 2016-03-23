@@ -1,4 +1,4 @@
 .idea/
 .metadata/
 *.class
-./project
+.project/
