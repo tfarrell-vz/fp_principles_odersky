@@ -1,8 +1,6 @@
 object ParenthesesBalancing {
   /**
    * Verifies whether the parentheses in a given character list (string) are balanced.
-   * @param chars
-   * @return
    */
   def balance(chars: List[Char]): Boolean = {
     def loop(chars: List[Char], balance: Int): Int = {
