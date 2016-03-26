@@ -32,5 +32,13 @@ class PascalsTriangleSpec extends FunSpec {
     it("should have value 1 at position(0,2)") {
       assert(PascalsTriangle.pascal(0,2) == 1)
     }
+
+    it("should have value 2 at position (1,2)") {
+      assert(PascalsTriangle.pascal(1,2) == 2)
+    }
+
+    it("should have value 6 at position (2,4)") {
+      assert(PascalsTriangle.pascal(2,4) == 6)
+    }
   }
 }
