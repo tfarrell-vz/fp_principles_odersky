@@ -15,4 +15,30 @@ class SetSpec extends FunSpec {
     assert(!contains(s, 2))
   }
 
+  trait TestSets {
+    val s = singletonSet(1)
+    val t = singletonSet(2)
+    val z = singletonSet(3)
+  }
+
+  new TestSets {
+    val u = union(s, t)
+
+    describe("After a union of two sets, s and t, forming u") {
+      describe("An element belonging to s, and not t, also belongs also to u") {
+        assert(contains(u, 1))
+      }
+
+      describe("An element belonging to t, and not s, also belongs to u") {
+        assert(contains(u, 2))
+      }
+
+      describe("An element that belongs to neither t nor s, doesn't belong to u") {
+        assert(!contains(u, 3))
+      }
+
+    }
+  }
+
+
 }
