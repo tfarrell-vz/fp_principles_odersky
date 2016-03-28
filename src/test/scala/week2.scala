@@ -19,11 +19,12 @@ class SetSpec extends FunSpec {
     val s = singletonSet(1)
     val t = singletonSet(2)
     val z = singletonSet(3)
+    val u = union(s, t)
+    val r = union(s, z)
+    val i = intersect(u, r)
   }
 
   new TestSets {
-    val u = union(s, t)
-
     describe("After a union of two sets, s and t, forming u") {
       describe("An element belonging to s, and not t, also belongs also to u") {
         assert(contains(u, 1))
@@ -37,6 +38,12 @@ class SetSpec extends FunSpec {
         assert(!contains(u, 3))
       }
 
+    }
+
+    describe("The intersect of two sets, r and u, forming i") {
+      describe("An element that belongs to both r and u, belongs to i") {
+        assert(contains(r, 1) && contains(u, 1) && contains(i, 1))
+      }
     }
   }
 
