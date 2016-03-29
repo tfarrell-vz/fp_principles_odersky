@@ -68,6 +68,15 @@ class SetSpec extends FunSpec {
         assert(contains(u, 2) && !contains(r, 2) && !contains(d, 2))
       }
     }
+
+    describe("A filter of a set returns a set that satisfies the condition of the filter's predicate") {
+      describe("Given a set e containing the first 5 integers, and a predicate of i => i % 2, the resulting set is the even subset of e") {
+        val e = (x: Int) => x >= 0 && x < 5
+        val p = (x: Int) => x % 2 == 0
+        val result = filter(e, p)
+        assert(contains(result, 0) && contains(result, 2) && contains(result, 4) && !contains(result, 1) && !contains(result, 3))
+      }
+    }
   }
 
 
