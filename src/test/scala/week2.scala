@@ -22,6 +22,7 @@ class SetSpec extends FunSpec {
     val u = union(s, t) // (1, 2)
     val r = union(s, z) // (1, 3)
     val i = intersect(u, r)
+    val d = diff(r, u)
   }
 
   new TestSets {
@@ -51,6 +52,12 @@ class SetSpec extends FunSpec {
 
       describe("An element that belongs to u but not r, doesn't belong to i") {
         assert(contains(u, 2) && !contains(r, 2) && !contains(i, 2))
+      }
+    }
+
+    describe("The diff of two sets, r and u, form set d") {
+      describe("An element that bleongs to both r and u, doesn't belong to d") {
+        assert(contains(r, 1) && contains(u, 1) && !contains(d, 1))
       }
     }
   }
