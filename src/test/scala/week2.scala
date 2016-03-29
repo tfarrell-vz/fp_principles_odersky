@@ -56,8 +56,12 @@ class SetSpec extends FunSpec {
     }
 
     describe("The diff of two sets, r and u, form set d") {
-      describe("An element that bleongs to both r and u, doesn't belong to d") {
+      describe("An element that belongs to both r and u, doesn't belong to d") {
         assert(contains(r, 1) && contains(u, 1) && !contains(d, 1))
+      }
+
+      describe("An element that belongs to r, but not u, belongs to d") {
+        assert(contains(r, 3) && !contains(u, 3) && contains(d, 3))
       }
     }
   }
