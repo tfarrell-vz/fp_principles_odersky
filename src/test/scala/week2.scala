@@ -48,6 +48,10 @@ class SetSpec extends FunSpec {
       describe("An element that belongs to r but not u, doesn't belong to i") {
         assert(contains(r, 3) && !contains(u, 3) && !contains(i, 3))
       }
+
+      describe("An element that belongs to u but not r, doesn't belong to i") {
+        assert(contains(u, 2) && !contains(r, 2) && !contains(i, 2))
+      }
     }
   }
 
