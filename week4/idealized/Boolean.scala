@@ -1,22 +1,22 @@
 package idealized.scala
 
-abstract class Boolean1 {
+abstract class BooleanI {
   def ifThenElse[T](t: => T, e: => T): T
 
-  def && (x: => Boolean1): Boolean1 = ifThenElse(x, false1)
-  def || (x: => Boolean1): Boolean1 = ifThenElse(true1, x)
-  def unary_!: Boolean            = ifThenElse(false1, true1)
+  def && (x: => BooleanI): BooleanI = ifThenElse(x, falseI)
+  def || (x: => BooleanI): BooleanI = ifThenElse(trueI, x)
+  def unary_!: Boolean            = ifThenElse(falseI, trueI)
 
-  def == (x: Boolean1): Boolean1    = ifThenElse(x, x.unary_!)
-  def != (x: Boolean1): Boolean1    = ifThenElse(x.unary_!, x)
+  def == (x: BooleanI): BooleanI    = ifThenElse(x, x.unary_!)
+  def != (x: BooleanI): BooleanI    = ifThenElse(x.unary_!, x)
 
-  def < (x: Boolean1): Boolean1     = ifThenElse(false1, x)
+  def < (x: BooleanI): BooleanI     = ifThenElse(falseI, x)
 }
 
-object true1 extends Boolean1 {
+object trueI extends BooleanI {
   def ifThenElse[T](t: => T, e: => T) = t
 }
 
-object false1 extends Boolean {
+object falseI extends Boolean {
   def ifThenElse[T](t: => T, e: => T) = e
 }
