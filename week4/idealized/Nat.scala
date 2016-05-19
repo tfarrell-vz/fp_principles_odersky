@@ -13,10 +13,15 @@ object Zero extends Nat {
   def predecessor: Nat = throw new NoSuchElementException("Negative: Zero is the smallest natural number.")
   def successor: Nat = Succ(Zero)
   def + (that: Nat): Nat = that
-  def - (that: Nat): throw new NoSuchElementException("Negative: Zero is the smallest natural number.")
+  def - (that: Nat): if (that.isZero) this else throw new NoSuchElementException("Negative: Zero is the smallest natural number.")
 }
 
 /* Succ represents the natural number that is one bigger than the one given */
 class Succ(n: Nat) extends Nat {
-
+  def isZero: Boolean = false
+  def predecessor: Nat = n
+  def successor = new Succ(this)
+  def + (that: Nat): Nat = new Succ(n + that)
+  def - (that: Nat): Nat = if (that.isZero) this else n - that.predecessor
 }
+
